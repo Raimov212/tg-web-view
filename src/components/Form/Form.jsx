@@ -76,7 +76,7 @@ const Form = () => {
           <option value="Samarqand">Samarqand</option>
         </select>
         <button className="w-full bg-blue-400 mt-2 rounded-md py-2 text-white">
-          Click Me
+          Click Me2
         </button>
       </form>
     </div>
