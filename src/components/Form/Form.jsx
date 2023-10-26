@@ -5,13 +5,13 @@ import { useTelegram } from "../../hooks/useTelegram";
 const Form = () => {
   const { tg } = useTelegram();
 
+  const [selectCountry, setSelectCountry] = useState("Tashkent");
   const [formInput, setFormInput] = useState({
     userName: "",
     userEmail: "",
     userPhoneNumber: "",
+    userCountry: "",
   });
-
-  const [selectCountry, setSelectCountry] = useState("Tashkent");
 
   const handleChangeInput = (e) => {
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -22,6 +22,8 @@ const Form = () => {
     setFormInput((prev) => ({ ...prev, userCountry: selectCountry }));
     console.log("formInput", formInput);
   };
+
+  console.log("selectCountry", selectCountry);
 
   useEffect(() => {
     tg.MainButton.setParams({
@@ -74,7 +76,7 @@ const Form = () => {
           <option value="Samarqand">Samarqand</option>
         </select>
         <button className="w-full bg-blue-400 mt-2 rounded-md py-2 text-white">
-          Submit
+          Click Me
         </button>
       </form>
     </div>
