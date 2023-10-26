@@ -17,6 +17,12 @@ const Form = () => {
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setFormInput((prev) => ({ ...prev, userCountry: selectCountry }));
+    console.log("formInput", formInput);
+  };
+
   const onSendData = useCallback(() => {
     tg.sendData(JSON.stringify(formInput));
   }, [formInput]);
@@ -54,35 +60,40 @@ const Form = () => {
 
   return (
     <div className="p-8 ">
-      <input
-        type="text"
-        value={formInput.userName}
-        name="userName"
-        placeholder="User Name"
-        onChange={(e) => handleChangeInput(e)}
-      />
-      <input
-        type="text"
-        value={formInput.userEmail}
-        name="userEmail"
-        placeholder="User Email"
-        onChange={(e) => handleChangeInput(e)}
-      />
-      <input
-        type="text"
-        value={formInput.userPhoneNumber}
-        name="userPhoneNumber"
-        placeholder="User Phone Number"
-        onChange={(e) => handleChangeInput(e)}
-      />
-      <select
-        className="p-3"
-        value={selectCountry}
-        onChange={(e) => setSelectCountry(e.target.value)}
-      >
-        <option value="Tashkent">Tashkent</option>
-        <option value="Samarqand">Samarqand</option>
-      </select>
+      <form onSubmit={handleFormSubmit}>
+        <input
+          type="text"
+          value={formInput.userName}
+          name="userName"
+          placeholder="User Name"
+          onChange={(e) => handleChangeInput(e)}
+        />
+        <input
+          type="text"
+          value={formInput.userEmail}
+          name="userEmail"
+          placeholder="User Email"
+          onChange={(e) => handleChangeInput(e)}
+        />
+        <input
+          type="text"
+          value={formInput.userPhoneNumber}
+          name="userPhoneNumber"
+          placeholder="User Phone Number"
+          onChange={(e) => handleChangeInput(e)}
+        />
+        <select
+          className="p-3"
+          value={selectCountry}
+          onChange={(e) => setSelectCountry(e.target.value)}
+        >
+          <option value="Tashkent">Tashkent</option>
+          <option value="Samarqand">Samarqand</option>
+        </select>
+        <button className="w-full bg-blue-400 mt-2 rounded-md py-2 text-white">
+          Click Me2
+        </button>
+      </form>
     </div>
   );
 };
