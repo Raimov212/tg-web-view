@@ -17,12 +17,6 @@ const Form = () => {
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setFormInput((prev) => ({ ...prev, userCountry: selectCountry }));
-    console.log("formInput", formInput);
-  };
-
   const onSendData = useCallback(() => {
     tg.sendData(JSON.stringify(formInput));
   }, [formInput]);
@@ -32,7 +26,7 @@ const Form = () => {
     return () => {
       tg.offEvent("mainButtonClicked", onSendData);
     };
-  }, []);
+  }, [onSendData]);
 
   useEffect(() => {
     if (
