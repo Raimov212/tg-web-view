@@ -15,15 +15,17 @@ const App = () => {
   }, []);
 
   return (
-    <Routes>
+    <div>
       <div className="flex justify">
         <Header />
         <button onClick={onToggleButton}>Toggle</button>
       </div>
-      <Route index element={<Form />} />
-      <Route path="/list" element={<ProductList />} />
-      <Route path="/*" element={<Form />} />
-    </Routes>
+      <Routes>
+        <Route index element={<Form />} />
+        <Route path="/list" element={<ProductList />} />
+        <Route path="/*" element={<Form />} />
+      </Routes>
+    </div>
   );
 };
 

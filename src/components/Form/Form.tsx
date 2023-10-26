@@ -24,7 +24,7 @@ const Form = () => {
   };
 
   useEffect(() => {
-    tg.MainBottom.setParams({
+    tg.MainButton.setParams({
       text: "Send Message",
     });
   }, []);
