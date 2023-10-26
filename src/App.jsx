@@ -18,7 +18,7 @@ const App = () => {
     <div>
       <div className="flex justify">
         <Header />
-        <button onClick={onToggleButton}>Toggle</button>
+        {/* <button onClick={onToggleButton}>Toggle</button> */}
       </div>
       <Routes>
         <Route index element={<Form />} />
