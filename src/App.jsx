@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { useTelegram } from "./hooks/useTelegram";
+import Header from "./components/Header/Header";
+import Form from "./components/Form/FOrm";
+import { Route } from "react-router";
 
 const tg = window.Telegram.WebApp;
 
@@ -10,14 +13,14 @@ const App = () => {
     tg.ready();
   }, []);
 
-  const onClose = () => {
-    tg.close();
-  };
-
   return (
     <div>
-      App
-      <button onClick={onToggleButton}>Toggle</button>
+      <div className="flex justify">
+        <Header />
+        <button onClick={onToggleButton}>Toggle</button>
+      </div>
+      <Route index element={<Form />} />
+      <Route path="/list" element={<Form />} />
     </div>
   );
 };
