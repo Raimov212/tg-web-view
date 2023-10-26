@@ -5,13 +5,14 @@ import { useTelegram } from "../../hooks/useTelegram";
 const Form = () => {
   const { tg } = useTelegram();
 
-  const [selectCountry, setSelectCountry] = useState("Tashkent");
   const [formInput, setFormInput] = useState({
     userName: "",
     userEmail: "",
     userPhoneNumber: "",
-    userCountry: "",
+    userCountry: "Tashkent",
   });
+
+  console.log("formInput", formInput);
 
   const handleChangeInput = (e) => {
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -76,9 +77,10 @@ const Form = () => {
         onChange={(e) => handleChangeInput(e)}
       />
       <select
+        name="userCountry"
         className="p-3"
-        value={selectCountry}
-        onChange={(e) => setSelectCountry(e.target.value)}
+        value={formInput.userCountry}
+        onChange={(e) => handleChangeInput(e)}
       >
         <option value="Tashkent">Tashkent</option>
         <option value="Samarqand">Samarqand</option>
