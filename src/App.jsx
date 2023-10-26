@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div>
       App
-      <button onClick={onClose}></button>
+      <button onClick={onClose}>Click Me</button>
     </div>
   );
 };
