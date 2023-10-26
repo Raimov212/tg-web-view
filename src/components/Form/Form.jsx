@@ -56,7 +56,12 @@ const Form = () => {
     tg.MainButton.setParams({
       text: "Send Message",
     });
-  }, []);
+  }, [
+    formInput.userCountry,
+    formInput.userEmail,
+    formInput.userName,
+    formInput.userPhoneNumber,
+  ]);
 
   return (
     <div className="p-8 ">
