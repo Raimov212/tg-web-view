@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Form.css";
 import { useTelegram } from "../../hooks/useTelegram";
 
@@ -20,14 +20,14 @@ const Form = () => {
 
   const onSendData = useCallback(() => {
     tg.sendData(JSON.stringify(formInput));
-  }, [formInput]);
+  }, [formInput, tg]);
 
   useEffect(() => {
     tg.onEvent("mainButtonClicked", onSendData);
     return () => {
       tg.offEvent("mainButtonClicked", onSendData);
     };
-  }, [onSendData]);
+  }, [onSendData, tg]);
 
   useEffect(() => {
     if (
@@ -45,13 +45,14 @@ const Form = () => {
     formInput.userEmail,
     formInput.userName,
     formInput.userPhoneNumber,
+    tg,
   ]);
 
   useEffect(() => {
     tg.MainButton.setParams({
       text: "Send Message",
     });
-  }, []);
+  }, [tg]);
 
   return (
     <div className="p-8 mt-12">
